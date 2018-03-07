@@ -1,9 +1,11 @@
 import { DefinitionNode, DocumentNode, FragmentDefinitionNode, GraphQLSchema, OperationDefinitionNode, printType } from 'graphql';
 import { Document } from '../types';
 import { transformFragment } from './transform-fragment-document';
-import { OPERATION_DEFINITION, FRAGMENT_DEFINITION } from 'graphql/language/kinds';
+import { Kind } from 'graphql/language/kinds';
 import { transformOperation } from './transform-operation';
 import { debugLog } from '../debugging';
+
+const { OPERATION_DEFINITION, FRAGMENT_DEFINITION } = Kind;
 
 export function transformDocument(schema: GraphQLSchema, documentNode: DocumentNode): Document {
   const result: Document = {

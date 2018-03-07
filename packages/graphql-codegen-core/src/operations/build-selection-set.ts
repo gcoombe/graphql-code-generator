@@ -7,11 +7,13 @@ import {
   FieldNode, FragmentSpreadNode, getNamedType, GraphQLSchema, GraphQLType, InlineFragmentNode, SelectionNode,
   SelectionSetNode, typeFromAST
 } from 'graphql';
-import { FIELD, FRAGMENT_SPREAD, INLINE_FRAGMENT } from 'graphql/language/kinds';
+import { Kind } from 'graphql/language/kinds';
 import { getFieldDef } from '../utils/get-field-def';
 import { resolveType } from '../schema/resolve-type';
 import { debugLog } from '../debugging';
 import { resolveTypeIndicators } from '../schema/resolve-type-indicators';
+
+const { FIELD, FRAGMENT_SPREAD, INLINE_FRAGMENT } = Kind;
 
 export function separateSelectionSet(selectionSet: SelectionSetItem[]): any {
   const fields = selectionSet.filter(n => isFieldNode(n));
