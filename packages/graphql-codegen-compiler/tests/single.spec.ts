@@ -4,11 +4,11 @@ import {
   schemaToTemplateContext,
   SchemaTemplateContext,
   introspectionToGraphQLSchema
-} from 'graphql-codegen-core';
-import { gql, makeExecutableSchema, GraphQLSchema } from 'graphql-codegen-core';
+} from '../../graphql-codegen-core/dist';
+import { gql, makeExecutableSchema, GraphQLSchema } from '../../graphql-codegen-core/dist';
 import * as fs from 'fs';
 import { compileTemplate } from '../src/compile';
-import { TypescriptSingleFile, GeneratorConfig } from 'graphql-codegen-generators';
+import { TypescriptSingleFile, GeneratorConfig } from '../../graphql-codegen-generators/dist';
 
 describe('Single File', () => {
   const compileAndBuildContext = (typeDefs: string): SchemaTemplateContext => {

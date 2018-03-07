@@ -8,12 +8,12 @@ import {
   SchemaTemplateContext,
   SelectionSetFragmentSpread,
   Variable
-} from 'graphql-codegen-core';
+} from '../../graphql-codegen-core/dist';
 import { getFieldTypeAsString } from './field-type-to-string';
 import { sanitizeFilename } from './sanitizie-filename';
 import { FlattenModel, FlattenOperation } from './types';
 import { flattenSelectionSet } from './flatten-types';
-import { GeneratorConfig } from 'graphql-codegen-generators';
+import { GeneratorConfig } from '../../graphql-codegen-generators/dist';
 
 export const initHelpers = (config: GeneratorConfig, schemaContext: SchemaTemplateContext) => {
   const customHelpers = config.customHelpers || {};

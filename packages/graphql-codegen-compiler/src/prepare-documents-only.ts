@@ -1,4 +1,4 @@
-import { SchemaTemplateContext } from 'graphql-codegen-core';
+import { SchemaTemplateContext } from '../../graphql-codegen-core/dist';
 
 export function prepareSchemaForDocumentsOnly(templateContext: SchemaTemplateContext): SchemaTemplateContext {
   let copy = Object.assign({}, templateContext);

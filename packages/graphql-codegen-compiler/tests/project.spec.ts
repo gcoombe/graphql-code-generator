@@ -1,5 +1,5 @@
-import { EInputType, GeneratorConfig } from 'graphql-codegen-generators';
-import { gql, introspectionToGraphQLSchema, schemaToTemplateContext, transformDocument } from 'graphql-codegen-core';
+import { EInputType, GeneratorConfig } from '../../graphql-codegen-generators/dist';
+import { gql, introspectionToGraphQLSchema, schemaToTemplateContext, transformDocument } from '../../graphql-codegen-core/dist';
 import * as fs from 'fs';
 import { compileTemplate } from '../src/compile';
 

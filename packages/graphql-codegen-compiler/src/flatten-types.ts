@@ -2,7 +2,7 @@ import { FlattenDocument, FlattenFragment, FlattenModel, FlattenOperation } from
 import {
   Document, Fragment, isFieldNode, isInlineFragmentNode, Operation, SelectionSetFieldNode, SelectionSetInlineFragment,
   SelectionSetItem
-} from 'graphql-codegen-core';
+} from '../../graphql-codegen-core/dist';
 import { pascalCase } from 'change-case';
 
 export const handleNameDuplications = (name: string, existing: FlattenModel[]): string => {

@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { IntrospectionQuery } from 'graphql-codegen-core';
+import { IntrospectionQuery } from '../../../graphql-codegen-core/dist';
 import * as path from 'path';
 
 export const introspectionFromFile = (file: string) => {

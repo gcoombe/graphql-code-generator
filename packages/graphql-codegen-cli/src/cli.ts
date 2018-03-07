@@ -7,13 +7,13 @@ import {
   compileTemplate,
   FileOutput,
   ALLOWED_CUSTOM_TEMPLATE_EXT,
-} from 'graphql-codegen-compiler';
+} from '../../graphql-codegen-compiler/dist';
 import {
   debugLog,
   introspectionToGraphQLSchema,
   schemaToTemplateContext,
   transformDocument
-} from 'graphql-codegen-core';
+} from '../../graphql-codegen-core/dist';
 import { loadDocumentsSources } from './loaders/document-loader';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -22,7 +22,7 @@ import {
   EInputType,
   GeneratorConfig,
   getGeneratorConfig
-} from 'graphql-codegen-generators';
+} from '../../graphql-codegen-generators/dist';
 import * as mkdirp from 'mkdirp';
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';

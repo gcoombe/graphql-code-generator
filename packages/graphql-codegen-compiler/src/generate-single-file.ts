@@ -1,7 +1,7 @@
 import { prepareSchemaForDocumentsOnly } from './prepare-documents-only';
 import { FileOutput, Settings } from './types';
-import { SchemaTemplateContext, Document, debugLog } from 'graphql-codegen-core';
-import { GeneratorConfig } from 'graphql-codegen-generators';
+import { SchemaTemplateContext, Document, debugLog } from '../../graphql-codegen-core/dist';
+import { GeneratorConfig } from '../../graphql-codegen-generators/dist';
 import * as moment from 'moment';
 
 export function generateSingleFile(compiledIndexTemplate: HandlebarsTemplateDelegate, executionSettings: Settings, config: GeneratorConfig, templateContext: SchemaTemplateContext, documents: Document): FileOutput[] {

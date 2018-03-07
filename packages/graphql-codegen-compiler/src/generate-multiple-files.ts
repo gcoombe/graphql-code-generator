@@ -1,5 +1,5 @@
 import { FileOutput, MultiFileTemplates, Settings } from './types';
-import { GeneratorConfig } from 'graphql-codegen-generators';
+import { GeneratorConfig } from '../../graphql-codegen-generators/dist';
 import {
   Enum,
   Fragment,
@@ -10,7 +10,7 @@ import {
   Type,
   Union,
   Document, debugLog
-} from 'graphql-codegen-core';
+} from '../../graphql-codegen-core/dist';
 import { sanitizeFilename } from './sanitizie-filename';
 import { prepareSchemaForDocumentsOnly } from './prepare-documents-only';
 import * as path from 'path';

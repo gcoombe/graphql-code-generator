@@ -2,11 +2,11 @@ import '../test-matchers/custom-matchers';
 import {
   schemaToTemplateContext,
   SchemaTemplateContext, transformDocument, introspectionToGraphQLSchema,
-} from 'graphql-codegen-core';
-import { gql, makeExecutableSchema, GraphQLSchema } from 'graphql-codegen-core';
+} from '../..//graphql-codegen-core/dist';
+import { gql, makeExecutableSchema, GraphQLSchema } from '../../graphql-codegen-core/dist';
 import { compileTemplate } from '../src/compile';
 import * as fs from 'fs';
-import { TypescriptMultiFile, GeneratorConfig } from 'graphql-codegen-generators';
+import { TypescriptMultiFile, GeneratorConfig } from '../../graphql-codegen-generators/dist';
 
 describe('Multiple Files', () => {
   const compileAndBuildContext = (typeDefs: string): SchemaTemplateContext => {
