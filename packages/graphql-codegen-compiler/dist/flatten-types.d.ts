@@ -1,5 +1,5 @@
 import { FlattenDocument, FlattenModel } from './types';
-import { Document, SelectionSetItem } from 'graphql-codegen-core';
+import { Document, SelectionSetItem } from '../../graphql-codegen-core/dist';
 export declare const handleNameDuplications: (name: string, existing: FlattenModel[]) => string;
 export declare function flattenSelectionSet(selectionSet: SelectionSetItem[], result?: FlattenModel[]): FlattenModel[];
 export declare function flattenTypes(document: Document): FlattenDocument;

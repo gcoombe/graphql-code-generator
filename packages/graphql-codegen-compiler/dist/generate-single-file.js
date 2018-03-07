@@ -9,10 +9,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var prepare_documents_only_1 = require("./prepare-documents-only");
-var graphql_codegen_core_1 = require("graphql-codegen-core");
+var dist_1 = require("../../graphql-codegen-core/dist");
 var moment = require("moment");
 function generateSingleFile(compiledIndexTemplate, executionSettings, config, templateContext, documents) {
-    graphql_codegen_core_1.debugLog("[generateSingleFile] Compiling single file to: " + config.outFile);
+    dist_1.debugLog("[generateSingleFile] Compiling single file to: " + config.outFile);
     return [
         {
             filename: config.outFile,

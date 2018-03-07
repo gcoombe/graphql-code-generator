@@ -41,13 +41,13 @@ var introspection_from_file_1 = require("./loaders/introspection-from-file");
 var introspection_from_url_1 = require("./loaders/introspection-from-url");
 var schema_from_export_1 = require("./loaders/schema-from-export");
 var documents_glob_1 = require("./utils/documents-glob");
-var graphql_codegen_compiler_1 = require("graphql-codegen-compiler");
-var graphql_codegen_core_1 = require("graphql-codegen-core");
+var dist_1 = require("../../graphql-codegen-compiler/dist");
+var dist_2 = require("../../graphql-codegen-core/dist");
 var document_loader_1 = require("./loaders/document-loader");
 var path = require("path");
 var fs = require("fs");
 var templates_scanner_1 = require("./loaders/templates-scanner");
-var graphql_codegen_generators_1 = require("graphql-codegen-generators");
+var dist_3 = require("../../graphql-codegen-generators/dist");
 var mkdirp = require("mkdirp");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 function collect(val, memo) {
@@ -113,10 +113,10 @@ exports.executeWithOptions = function (options) { return __awaiter(_this, void 0
                 modulesToRequire = options.require || [];
                 modulesToRequire.forEach(function (mod) { return require(mod); });
                 if (file) {
-                    schemaExportPromise = introspection_from_file_1.introspectionFromFile(file).then(graphql_codegen_core_1.introspectionToGraphQLSchema);
+                    schemaExportPromise = introspection_from_file_1.introspectionFromFile(file).then(dist_2.introspectionToGraphQLSchema);
                 }
                 else if (url) {
-                    schemaExportPromise = introspection_from_url_1.introspectionFromUrl(url, headers).then(graphql_codegen_core_1.introspectionToGraphQLSchema);
+                    schemaExportPromise = introspection_from_url_1.introspectionFromUrl(url, headers).then(dist_2.introspectionToGraphQLSchema);
                 }
                 else if (fsExport) {
                     schemaExportPromise = schema_from_export_1.schemaFromExport(fsExport);
@@ -127,14 +127,14 @@ exports.executeWithOptions = function (options) { return __awaiter(_this, void 0
                 if (process.env.VERBOSE !== undefined) {
                     console.log("GraphQL Schema is: ", graphQlSchema);
                 }
-                context = graphql_codegen_core_1.schemaToTemplateContext(graphQlSchema);
-                graphql_codegen_core_1.debugLog("[executeWithOptions] Schema template context build, the result is: ");
+                context = dist_2.schemaToTemplateContext(graphQlSchema);
+                dist_2.debugLog("[executeWithOptions] Schema template context build, the result is: ");
                 Object.keys(context).forEach(function (key) {
                     if (Array.isArray(context[key])) {
-                        graphql_codegen_core_1.debugLog("Total of " + key + ": " + context[key].length);
+                        dist_2.debugLog("Total of " + key + ": " + context[key].length);
                     }
                 });
-                _a = graphql_codegen_core_1.transformDocument;
+                _a = dist_2.transformDocument;
                 _b = [graphQlSchema];
                 _c = document_loader_1.loadDocumentsSources;
                 return [4 /*yield*/, documents_glob_1.documentsFromGlobs(documents)];
@@ -142,8 +142,8 @@ exports.executeWithOptions = function (options) { return __awaiter(_this, void 0
                 transformedDocuments = _a.apply(void 0, _b.concat([_c.apply(void 0, [_d.sent()])]));
                 templateConfig = null;
                 if (template && template !== '') {
-                    graphql_codegen_core_1.debugLog("[executeWithOptions] using template: " + template);
-                    templateConfig = graphql_codegen_generators_1.getGeneratorConfig(template);
+                    dist_2.debugLog("[executeWithOptions] using template: " + template);
+                    templateConfig = dist_3.getGeneratorConfig(template);
                     if (!templateConfig) {
                         templateFromExport = require(template);
                         if (!templateFromExport || !templateFromExport.default) {
@@ -154,19 +154,19 @@ exports.executeWithOptions = function (options) { return __awaiter(_this, void 0
                         }
                     }
                 }
-                graphql_codegen_core_1.debugLog("[executeWithOptions] using project: " + project);
+                dist_2.debugLog("[executeWithOptions] using project: " + project);
                 configPath = path.resolve(process.cwd(), gqlGenConfigFilePath);
                 config = null;
                 if (fs.existsSync(configPath)) {
                     console.log('Loading config file from: ', configPath);
                     config = JSON.parse(fs.readFileSync(configPath).toString());
-                    graphql_codegen_core_1.debugLog("[executeWithOptions] Got project config JSON: ", config);
+                    dist_2.debugLog("[executeWithOptions] Got project config JSON: ", config);
                 }
                 if (project && project !== '') {
                     if (config === null) {
                         throw new Error("To use project feature, please specify --config path or create gql-gen.json in your project root!");
                     }
-                    templates = templates_scanner_1.scanForTemplatesInPath(project, graphql_codegen_compiler_1.ALLOWED_CUSTOM_TEMPLATE_EXT);
+                    templates = templates_scanner_1.scanForTemplatesInPath(project, dist_1.ALLOWED_CUSTOM_TEMPLATE_EXT);
                     resolvedHelpers_1 = {};
                     Object.keys(config.customHelpers || {}).map(function (helperName) {
                         var filePath = config.customHelpers[helperName];
@@ -185,7 +185,7 @@ exports.executeWithOptions = function (options) { return __awaiter(_this, void 0
                         }
                     });
                     templateConfig = {
-                        inputType: graphql_codegen_generators_1.EInputType.PROJECT,
+                        inputType: dist_3.EInputType.PROJECT,
                         templates: templates,
                         flattenTypes: config.flattenTypes,
                         primitives: config.primitives,
@@ -193,7 +193,7 @@ exports.executeWithOptions = function (options) { return __awaiter(_this, void 0
                     };
                 }
                 templateConfig.config = config ? (config.generatorConfig || {}) : {};
-                return [2 /*return*/, graphql_codegen_compiler_1.compileTemplate(templateConfig, context, [transformedDocuments], {
+                return [2 /*return*/, dist_1.compileTemplate(templateConfig, context, [transformedDocuments], {
                         generateSchema: generateSchema,
                         generateDocuments: generateDocuments,
                     }).map(function (item) {

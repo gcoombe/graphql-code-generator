@@ -8,7 +8,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var graphql_codegen_core_1 = require("graphql-codegen-core");
+var dist_1 = require("../../graphql-codegen-core/dist");
 var change_case_1 = require("change-case");
 exports.handleNameDuplications = function (name, existing) {
     if (existing.find(function (model) { return model.modelType === name; })) {
@@ -45,7 +45,7 @@ function buildModelFromInlineFragment(fragment, result) {
 function flattenSelectionSet(selectionSet, result) {
     if (result === void 0) { result = []; }
     selectionSet.forEach(function (item) {
-        if (graphql_codegen_core_1.isFieldNode(item)) {
+        if (dist_1.isFieldNode(item)) {
             if (item.selectionSet.length > 0) {
                 var model = buildModelFromField(item, result);
                 item.type = model.modelType;
@@ -53,7 +53,7 @@ function flattenSelectionSet(selectionSet, result) {
                 flattenSelectionSet(item.selectionSet, result);
             }
         }
-        else if (graphql_codegen_core_1.isInlineFragmentNode(item)) {
+        else if (dist_1.isInlineFragmentNode(item)) {
             var model = buildModelFromInlineFragment(item, result);
             item.onType = model.modelType;
             result.push(model);

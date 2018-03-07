@@ -8,7 +8,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var graphql_codegen_core_1 = require("graphql-codegen-core");
+var dist_1 = require("../../../graphql-codegen-core/dist");
 var request = require("request");
 exports.introspectionFromUrl = function (url, headers) {
     console.log("Loading GraphQL Introspection from remote: " + url + "...");
@@ -25,12 +25,12 @@ exports.introspectionFromUrl = function (url, headers) {
         var _a;
     }).filter(function (item) { return item; });
     var extraHeaders = __assign({ 'Accept': 'application/json', 'Content-Type': 'application/json' }, (splittedHeaders.reduce(function (prev, item) { return (__assign({}, prev, item)); }, {})));
-    graphql_codegen_core_1.debugLog("Executing POST to " + url + " with headers: ", extraHeaders);
+    dist_1.debugLog("Executing POST to " + url + " with headers: ", extraHeaders);
     return new Promise(function (resolve, reject) {
         request.post({
             url: url,
             json: {
-                query: graphql_codegen_core_1.introspectionQuery.replace('locations', '')
+                query: dist_1.introspectionQuery.replace('locations', '')
             },
             headers: extraHeaders,
         }, function (err, response, body) {

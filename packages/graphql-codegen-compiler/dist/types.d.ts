@@ -1,4 +1,4 @@
-import { Operation, Document, Fragment, SelectionSetFragmentSpread, SelectionSetFieldNode, SelectionSetInlineFragment } from 'graphql-codegen-core';
+import { Operation, Document, Fragment, SelectionSetFragmentSpread, SelectionSetFieldNode, SelectionSetInlineFragment } from '../../graphql-codegen-core/dist';
 export interface FileOutput {
     filename: string;
     content: string;

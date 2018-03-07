@@ -8,7 +8,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var graphql_codegen_core_1 = require("graphql-codegen-core");
+var dist_1 = require("../../graphql-codegen-core/dist");
 var sanitizie_filename_1 = require("./sanitizie-filename");
 var prepare_documents_only_1 = require("./prepare-documents-only");
 var path = require("path");
@@ -34,7 +34,7 @@ exports.ALLOWED_CUSTOM_TEMPLATE_EXT = [
 ];
 function handleSchema(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleSchema] called");
+    dist_1.debugLog("[handleSchema] called");
     return [{
             filename: prefixAndPath + '.' + (fileExtension || ''),
             content: compiledTemplate(__assign({ config: extraConfig }, schemaContext)),
@@ -42,7 +42,7 @@ function handleSchema(compiledTemplate, schemaContext, documents, extraConfig, f
 }
 function handleAll(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleAll] called");
+    dist_1.debugLog("[handleAll] called");
     return [{
             filename: prefixAndPath + '.' + (fileExtension || ''),
             content: compiledTemplate(__assign({}, schemaContext, { config: extraConfig, operations: documents.operations, fragments: documents.fragments, hasFragments: documents.hasFragments, hasOperations: documents.hasOperations })),
@@ -50,7 +50,7 @@ function handleAll(compiledTemplate, schemaContext, documents, extraConfig, file
 }
 function handleDocuments(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleDocuments] called");
+    dist_1.debugLog("[handleDocuments] called");
     return [{
             filename: prefixAndPath + '.' + (fileExtension || ''),
             content: compiledTemplate({
@@ -64,7 +64,7 @@ function handleDocuments(compiledTemplate, schemaContext, documents, extraConfig
 }
 function handleType(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleType] called");
+    dist_1.debugLog("[handleType] called");
     return schemaContext.types.map(function (type) { return ({
         filename: prefixAndPath + sanitizie_filename_1.sanitizeFilename(type.name, 'type') + '.' + (fileExtension || ''),
         content: compiledTemplate(__assign({}, type, { config: extraConfig })),
@@ -72,7 +72,7 @@ function handleType(compiledTemplate, schemaContext, documents, extraConfig, fil
 }
 function handleInputType(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleInputType] called");
+    dist_1.debugLog("[handleInputType] called");
     return schemaContext.inputTypes.map(function (type) { return ({
         filename: prefixAndPath + sanitizie_filename_1.sanitizeFilename(type.name, 'input-type') + '.' + (fileExtension || ''),
         content: compiledTemplate(__assign({}, type, { config: extraConfig })),
@@ -80,7 +80,7 @@ function handleInputType(compiledTemplate, schemaContext, documents, extraConfig
 }
 function handleUnion(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleUnion] called");
+    dist_1.debugLog("[handleUnion] called");
     return schemaContext.unions.map(function (union) { return ({
         filename: prefixAndPath + sanitizie_filename_1.sanitizeFilename(union.name, 'union') + '.' + (fileExtension || ''),
         content: compiledTemplate(__assign({}, union, { config: extraConfig })),
@@ -88,7 +88,7 @@ function handleUnion(compiledTemplate, schemaContext, documents, extraConfig, fi
 }
 function handleEnum(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleEnum] called");
+    dist_1.debugLog("[handleEnum] called");
     return schemaContext.enums.map(function (en) { return ({
         filename: prefixAndPath + sanitizie_filename_1.sanitizeFilename(en.name, 'enum') + '.' + (fileExtension || ''),
         content: compiledTemplate(__assign({}, en, { config: extraConfig })),
@@ -96,7 +96,7 @@ function handleEnum(compiledTemplate, schemaContext, documents, extraConfig, fil
 }
 function handleScalar(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleScalar] called");
+    dist_1.debugLog("[handleScalar] called");
     return schemaContext.scalars.map(function (scalar) { return ({
         filename: prefixAndPath + sanitizie_filename_1.sanitizeFilename(scalar.name, 'scalar') + '.' + (fileExtension || ''),
         content: compiledTemplate(__assign({}, scalar, { config: extraConfig })),
@@ -104,7 +104,7 @@ function handleScalar(compiledTemplate, schemaContext, documents, extraConfig, f
 }
 function handleInterface(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleInterface] called");
+    dist_1.debugLog("[handleInterface] called");
     return schemaContext.interfaces.map(function (inf) { return ({
         filename: prefixAndPath + sanitizie_filename_1.sanitizeFilename(inf.name, 'interface') + '.' + (fileExtension || ''),
         content: compiledTemplate(__assign({}, inf, { config: extraConfig })),
@@ -112,7 +112,7 @@ function handleInterface(compiledTemplate, schemaContext, documents, extraConfig
 }
 function handleOperation(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleOperation] called");
+    dist_1.debugLog("[handleOperation] called");
     return documents.operations.map(function (operation) { return ({
         filename: prefixAndPath + sanitizie_filename_1.sanitizeFilename(operation.name, operation.operationType) + '.' + (fileExtension || ''),
         content: compiledTemplate(__assign({}, operation, { config: extraConfig })),
@@ -120,7 +120,7 @@ function handleOperation(compiledTemplate, schemaContext, documents, extraConfig
 }
 function handleFragment(compiledTemplate, schemaContext, documents, extraConfig, fileExtension, prefixAndPath) {
     if (prefixAndPath === void 0) { prefixAndPath = ''; }
-    graphql_codegen_core_1.debugLog("[handleFragment] called");
+    dist_1.debugLog("[handleFragment] called");
     return documents.fragments.map(function (fragment) { return ({
         filename: prefixAndPath + sanitizie_filename_1.sanitizeFilename(fragment.name, 'fragment') + '.' + (fileExtension || ''),
         content: compiledTemplate(__assign({}, fragment, { config: extraConfig })),
@@ -159,20 +159,20 @@ function parseTemplateName(templateName) {
     return null;
 }
 function generateMultipleFiles(templates, executionSettings, config, templateContext, documents) {
-    graphql_codegen_core_1.debugLog("[generateMultipleFiles] Compiling multiple files...");
+    dist_1.debugLog("[generateMultipleFiles] Compiling multiple files...");
     var result = [];
     var schemaContext = (!executionSettings.generateSchema) ? prepare_documents_only_1.prepareSchemaForDocumentsOnly(templateContext) : templateContext;
     Object.keys(templates).forEach(function (templateName) {
-        graphql_codegen_core_1.debugLog("[generateMultipleFiles] Checking template: " + templateName);
+        dist_1.debugLog("[generateMultipleFiles] Checking template: " + templateName);
         var templateFn = templates[templateName];
         if (handlersMap[templateName]) {
-            graphql_codegen_core_1.debugLog("[generateMultipleFiles] Using simple handle of type: " + templateName);
+            dist_1.debugLog("[generateMultipleFiles] Using simple handle of type: " + templateName);
             var handler = handlersMap[templateName];
             result.push.apply(result, handler(templateFn, schemaContext, documents, __assign({}, (config.config), { currentTime: moment().format() }), config.filesExtension));
         }
         else {
             var parsedTemplateName = parseTemplateName(templateName);
-            graphql_codegen_core_1.debugLog("[generateMultipleFiles] Using custom template handlers, parsed template name result: ", parsedTemplateName);
+            dist_1.debugLog("[generateMultipleFiles] Using custom template handlers, parsed template name result: ", parsedTemplateName);
             if (parsedTemplateName !== null) {
                 result.push.apply(result, parsedTemplateName.handler(templateFn, schemaContext, documents, __assign({}, config.config, { currentTime: moment().format() }), parsedTemplateName.fileExtension, parsedTemplateName.prefix));
             }

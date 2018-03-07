@@ -1,4 +1,4 @@
-import { FileOutput } from 'graphql-codegen-compiler';
+import { FileOutput } from '../../graphql-codegen-compiler/dist';
 export interface CLIOptions {
     file?: string;
     url?: string;
